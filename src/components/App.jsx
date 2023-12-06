@@ -17,7 +17,10 @@ function App() {
       <GlobalStyle />
       <h1>App</h1>
       <Button>
-        <h1>Test loren impsum</h1>
+        <h1>Test lorem impsum</h1>
+      </Button>
+      <Button secondary>
+        <h1>Test lorem impsum</h1>
       </Button>
     </>
   )
