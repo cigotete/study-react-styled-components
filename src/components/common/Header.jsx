@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
@@ -15,7 +16,7 @@ const HeaderWrapper = styled.header`
 `;
 
 const Menu = styled.nav`
-    display: block;
+    display: ${p => p.open ? 'block' : 'none'};
     font-family: 'Open Sans';
     position: absolute;
     width: 100%;
@@ -24,6 +25,7 @@ const Menu = styled.nav`
     padding: 8px;
     box-sizing: border-box;
     border-bottom: 3px solid #fdd54f;
+    background: white;
 
     @media( min-width: 768px ){
       display: flex;
@@ -59,13 +61,37 @@ const StyledLink = styled(Link)`
     font-weight: ${(props) => (props.isActive ? 'bold' : 'normal')}; // isActive is not a valid attribute for this anchor tag, so Link component was overriden.
 `;
 
+const MobileMenuIcon = styled.div`
+    margin: auto 0 auto auto;
+    width: 25px;
+    min-width: 25px;
+    padding: 5px;
+
+    >div{
+        height: 3px;
+        background: #000000;
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    @media(min-width: 768px){
+        display: none;
+    }
+`;
+
 export function Header(){
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
       <HeaderWrapper>
-        <Menu>
+        <MobileMenuIcon onClick={() => setMenuOpen(menuOpen => !menuOpen)}>
+          <div />
+          <div />
+          <div />
+        </MobileMenuIcon>
+        <Menu open={menuOpen}>
           <StyledLink
             to="/"
             isActive={ pathname === '/'}
