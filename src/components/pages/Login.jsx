@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PageLayout, Input, Form } from "@/components/common";
+import { PageLayout, Input, Form, PasswordInput } from "@/components/common";
 
 export const Login = () => {
   const [formFields, setFormFields] = useState({username: '', password: ''});
@@ -22,16 +22,12 @@ export const Login = () => {
           name="username"
           type="text"
           placeholder="Username"
-        >
-        </Input>
-        <Input
+        />
+        <PasswordInput
           value={ formFields.password }
           onChange={  handleInputChange }
           name="password"
-          type="password"
-          placeholder="Password"
-        >
-        </Input>
+        />
       </Form>
     </PageLayout>
   );
