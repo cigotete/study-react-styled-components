@@ -10,19 +10,31 @@ const HeaderWrapper = styled.header`
     padding: 0 16px;
     position: fixed;
     top: 0;
-    background-color: #eeeeee;
+    background-image: linear-gradient(to right, #f84904, #fdd54f);
+    border-bottom: 3px solid #fdd54f;
 `;
 
 const Menu = styled.nav`
-    display: flex;
-    position: relative;
-    width: initial;
-    border-bottom: none;
-    margin: auto 0 auto auto;
+    display: block;
     font-family: 'Open Sans';
-    background: none;
-    left: initial;
-    top: initial;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    left: 0;
+    padding: 8px;
+    box-sizing: border-box;
+    border-bottom: 3px solid #fdd54f;
+
+    @media( min-width: 768px ){
+      display: flex;
+      background: none;
+      left: initial;
+      top: initial;
+      margin: auto 0 auto auto;
+      border-bottom: none;
+      position: relative;
+      width: initial;
+    }
 `;
 
 // eslint-disable-next-line no-unused-vars
