@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link as ReactRouterDomLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const HeaderWrapper = styled.header`
     height: 60px;
@@ -24,16 +25,26 @@ const Menu = styled.nav`
     top: initial;
 `;
 
+// eslint-disable-next-line no-unused-vars
+const Link = ({isActive, children, ...props}) => {
+  return (
+      <ReactRouterDomLink {...props}>
+          {children}
+      </ReactRouterDomLink>
+  );
+};
+Link.propTypes = {
+  isActive: PropTypes.bool,
+  children: PropTypes.node,
+};
+
 const StyledLink = styled(Link)`
     padding: 4px 8px;
     display: block;
     text-align: center;
     box-sizing: border-box;
     margin: auto 0;
-    font-weight: ${(props) => (props.isActive ? 'bold' : 'normal')};
-    // TODO: isActive is not a valid attribute for
-    // this anchor tag (causes error message if isActive is used),
-    // so Link component needs be recreated.
+    font-weight: ${(props) => (props.isActive ? 'bold' : 'normal')}; // isActive is not a valid attribute for this anchor tag, so Link component was overriden.
 `;
 
 export function Header(){
