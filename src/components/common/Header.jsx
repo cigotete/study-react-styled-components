@@ -24,17 +24,29 @@ const Menu = styled.nav`
     top: initial;
 `;
 
+const StyledLink = styled(Link)`
+    padding: 4px 8px;
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+    margin: auto 0;
+    font-weight: ${(props) => (props.isActive ? 'bold' : 'normal')};
+    // TODO: isActive is not a valid attribute for
+    // this anchor tag (causes error message if isActive is used),
+    // so Link component needs be recreated.
+`;
+
 export function Header(){
   return (
     <>
       <HeaderWrapper>
         <Menu>
-          <Link to="/">
+          <StyledLink to="/">
             Home
-          </Link>
-          <Link to="/login">
+          </StyledLink>
+          <StyledLink to="/login">
             Login
-          </Link>
+          </StyledLink>
         </Menu>
       </HeaderWrapper>
     </>
