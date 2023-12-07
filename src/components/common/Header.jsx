@@ -12,16 +12,30 @@ const HeaderWrapper = styled.header`
     background-color: #eeeeee;
 `;
 
+const Menu = styled.nav`
+    display: flex;
+    position: relative;
+    width: initial;
+    border-bottom: none;
+    margin: auto 0 auto auto;
+    font-family: 'Open Sans';
+    background: none;
+    left: initial;
+    top: initial;
+`;
+
 export function Header(){
   return (
     <>
       <HeaderWrapper>
-        <Link to="/">
-          Home
-        </Link>
-        <Link to="/login">
-          Login
-        </Link>
+        <Menu>
+          <Link to="/">
+            Home
+          </Link>
+          <Link to="/login">
+            Login
+          </Link>
+        </Menu>
       </HeaderWrapper>
     </>
   )
