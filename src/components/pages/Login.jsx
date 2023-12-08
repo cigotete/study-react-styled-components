@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PageLayout, Input, Form, PasswordInput, Button } from "@/components/common";
+import { PageLayout, Input, Form, PasswordInput, Button, Spinner } from "@/components/common";
 import { StyleSheetManager } from "styled-components";
 
 
@@ -30,27 +30,35 @@ export const Login = () => {
     <PageLayout>
       <h1>Login</h1>
       <Form onSubmit={ handleSubmit }>
-        <Input
-          value={ formFields.username }
-          onChange={  handleInputChange }
-          name="username"
-          type="text"
-          placeholder="Username"
-        />
-        <PasswordInput
-          value={ formFields.password }
-          onChange={  handleInputChange }
-          name="password"
-        />
+        {loading ? <Spinner /> : 
+        <>
+          <Input
+            value={ formFields.username }
+            onChange={  handleInputChange }
+            name="username"
+            type="text"
+            placeholder="Username"
+          />
+          <PasswordInput
+            value={ formFields.password }
+            onChange={  handleInputChange }
+            name="password"
+          />
+        </>
+        }
         <Button large type="submit" disabled={ loading }>
-          Login
+          {loading ? 'Loading...' : 'Login'}
         </Button>
-        <div className="alt-text">
-          or
-        </div>
-        <Button secondary type="button">
-          Register
-        </Button>
+        {!loading &&
+        <>
+          <div className="alt-text">
+            or
+          </div>
+          <Button secondary type="button">
+            Register
+          </Button>
+        </>
+        }
       </Form>
     </PageLayout>
     </StyleSheetManager>
