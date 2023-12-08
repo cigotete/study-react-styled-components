@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { PageLayout, Input, Form, PasswordInput } from "@/components/common";
+import { PageLayout, Input, Form, PasswordInput, Button } from "@/components/common";
+import { StyleSheetManager } from "styled-components";
+
 
 export const Login = () => {
   const [formFields, setFormFields] = useState({username: '', password: ''});
+  const [loading, setLoading] = useState(false);
 
   function handleInputChange(e){
     e.persist();
@@ -12,10 +15,21 @@ export const Login = () => {
     }));
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+        setLoading(false);
+    }, 2000);
+  }
+
   return (
+    <StyleSheetManager shouldForwardProp={
+      prop => prop !== 'large' && prop !== 'secondary'
+      }>
     <PageLayout>
       <h1>Login</h1>
-      <Form>
+      <Form onSubmit={ handleSubmit }>
         <Input
           value={ formFields.username }
           onChange={  handleInputChange }
@@ -28,7 +42,17 @@ export const Login = () => {
           onChange={  handleInputChange }
           name="password"
         />
+        <Button large type="submit" disabled={ loading }>
+          Login
+        </Button>
+        <div className="alt-text">
+          or
+        </div>
+        <Button secondary type="button">
+          Register
+        </Button>
       </Form>
     </PageLayout>
+    </StyleSheetManager>
   );
 }
