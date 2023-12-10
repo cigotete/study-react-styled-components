@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import { useState, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { Toggle } from '@/components/common';
 
 const HeaderWrapper = styled.header`
     height: 60px;
@@ -87,6 +88,7 @@ const MobileMenuIcon = styled.div`
 export function Header(){
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const {id, setTheme} = useContext(ThemeContext);
 
   return (
     <>
@@ -109,6 +111,7 @@ export function Header(){
           >
             Login
           </StyledLink>
+          <Toggle isActive={ id === 'dark' } onToggle={ setTheme } />
         </Menu>
       </HeaderWrapper>
     </>
