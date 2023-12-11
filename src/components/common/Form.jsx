@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button, Input } from '@/components/common';
 
 export const Form = styled.form`
     width: 100%;
@@ -13,5 +14,13 @@ export const Form = styled.form`
     .alt-text {
         text-align: center;
         margin: 10px 0;
+    }
+
+    >${Button}:first-of-type{
+        margin-top: 40px;
+    }
+
+    >${Input}{
+        margin-top: 20px;
     }
 `;
