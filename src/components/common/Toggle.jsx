@@ -20,18 +20,18 @@ const Notch = styled.div`
     background: white;
     border-radius: 50%;
     transition: transform 0.1s linear;
-    transform: translate(${ props => props.isActive ? '26px' : '1px' });
+    transform: translate(${ props => props.$isActive ? '26px' : '1px' });
 `
 
-export function Toggle({ isActive, onToggle }){
+export function Toggle({ $isActive, onToggle }){
   return (
     <ToggleWrapper onClick={ onToggle }>
-      <Notch isActive={ isActive } />
+      <Notch $isActive={ $isActive } />
     </ToggleWrapper>
   )
 }
 
 Toggle.propTypes = {
-  isActive: PropTypes.bool.isRequired,
+  $isActive: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired
 };

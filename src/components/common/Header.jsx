@@ -111,7 +111,7 @@ export function Header(){
           >
             Login
           </StyledLink>
-          <Toggle isActive={ id === 'dark' } onToggle={ setTheme } />
+          <Toggle $isActive={ id === 'dark' } onToggle={ setTheme } />
         </Menu>
       </HeaderWrapper>
     </>
